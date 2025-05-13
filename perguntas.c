@@ -1,7 +1,7 @@
 #include <string.h>
 #include "perguntas.h"
 
-void carregarPerguntas(Pergunta perguntas[], int categoria) {
+void carregarPerguntas(int categoria, Pergunta perguntas[]) {
     if (categoria == 1) { 
         // Conhecimentos Gerais
         strcpy(perguntas[0].pergunta, "Qual é o maior oceano do planeta?");

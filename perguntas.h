@@ -1,12 +1,14 @@
 #ifndef PERGUNTAS_H
 #define PERGUNTAS_H
 
-typedef struct{
-    char pergunta[256];
-    char opcoes[4][100];
-    int correta;
+#define MAX_TEXTO 256
+
+typedef struct {
+    char pergunta[MAX_TEXTO];
+    char opcoes[4][MAX_TEXTO]; // A, B, C, D
+    int correta;               // índice da resposta correta (0 a 3)
 } Pergunta;
 
-void carregarPerguntas(Pergunta perguntas[], int categoria);
+void carregarPerguntas(int categoria, Pergunta perguntas[]);
 
 #endif
