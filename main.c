@@ -110,20 +110,21 @@ int main() {
                     }
                 }
 
-                if (totalJogadores < MAX_JOGADORES) {
-                    ranking[totalJogadores].pontuacao = acertos;
-                    strcpy(ranking[totalJogadores].nome, nome);
-                    totalJogadores++;
+                // Verifica se o jogador já existe no ranking
+                int encontrado = 0;
+                for (int i = 0; i < totalJogadores; i++) {
+                    if (strcmp(ranking[i].nome, nome) == 0) {
+                        ranking[i].pontuacao += acertos; // Soma os pontos
+                        encontrado = 1;
+                        break;
+                    }
                 }
 
-                for (int i = 0; i < totalJogadores - 1; i++) {
-                    for (int j = i + 1; j < totalJogadores; j++) {
-                        if (ranking[j].pontuacao > ranking[i].pontuacao) {
-                            Ranking temp = ranking[i];
-                            ranking[i] = ranking[j];
-                            ranking[j] = temp;
-                        }
-                    }
+                // Se não encontrou, adiciona novo jogador
+                if (!encontrado && totalJogadores < MAX_JOGADORES) {
+                    strcpy(ranking[totalJogadores].nome, nome);
+                    ranking[totalJogadores].pontuacao = acertos;
+                    totalJogadores++;
                 }
 
                 int escolhaFim;
